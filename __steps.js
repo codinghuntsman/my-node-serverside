@@ -4,8 +4,9 @@
  --------------------------
  * 1. Create a folder (mkdir or manually)
  * 2. cd that folder
- * 3. npm install express
- * 4. create index.js into code blocks
+ * 3. npm init -y
+ * 3. npm install express cors mongodb
+ * 4. create index.js file in package.json
 
  ---------------------------
  **For express or node server
@@ -26,6 +27,11 @@
  * 2. write two line script into the package.json
  ** "start": "node index.js",
  ** "start": "nodemon index.js",
- ** then, type in command line(nodemon index.js) for auto run
+ ** then, type in command line(nodemon index.js Or npm run start-dev) for auto run
  *
+ * -----------------------------------------------------------------------------------------------------------
+ ** install mongoDb
+ * 1. npm i mongodb   for connect backend. if you do not install mongodb it will show error, can not found mongodb.
+ * ------------------------------------------------------------------------------------------------------------
+ * 
 */

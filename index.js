@@ -2,8 +2,12 @@ const express = require('express');
 const app = express();
 const cors = require('cors');
 const port = process.env.PORT || 5000;
+const { MongoClient, ServerApiVersion } = require('mongodb');
 
 
+
+// userdb
+// xBd8BI9Vmasa4AlP
 
 //------------------Middleware------------------------------------------------------
 // cors middleware shares data server side to client side.this is get middleware.
@@ -12,6 +16,27 @@ app.use(cors());
 // it will be show this error > SyntaxError: Unexpected end of JSON input.
 app.use(express.json());
 //-----------------------------------------------------------------------------------
+
+
+//-------------Insert a single data to database with insertOne--------------
+const uri = "mongodb+srv://userdb:xBd8BI9Vmasa4AlP@cluster0.lvcka.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
+async function run() {
+    try {
+        await client.connect();
+        const userCollection = client.db("foodExpress").collection("users");
+        app.post('/user', async (req, res) => {
+            const newUser = req.body;
+            const result = await userCollection.insertOne(newUser);
+            res.send(result);
+        })
+    }
+    finally {
+        // await client.close();
+    }
+}
+run().catch(console.dir);
+
 
 
 
